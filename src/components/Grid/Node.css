@@ -1,0 +1,125 @@
+/* Base styling for every cell in the grid */
+.node {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid rgba(175, 216, 248, 0.4);
+  background-color: #ffffff;
+  display: inline-block;
+  transition: background-color 0.2s ease, outline 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Start node - premium green gradient with a scale-up pop */
+.node-start {
+  background: linear-gradient(135deg, #42b883, #35495e);
+  outline: 1px solid #42b883;
+  animation: specialNodeAnimation 0.3s ease-out;
+  cursor: grab;
+}
+
+.node-start:active {
+  cursor: grabbing;
+}
+
+/* End node - premium red/coral gradient with a scale-up pop */
+.node-end {
+  background: linear-gradient(135deg, #ff5e62, #ff9966);
+  outline: 1px solid #ff5e62;
+  animation: specialNodeAnimation 0.3s ease-out;
+  cursor: grab;
+}
+
+.node-end:active {
+  cursor: grabbing;
+}
+
+/* Wall node - sleek, dark slate with a quick pop-up animation */
+.node-wall {
+  background-color: #1a202c;
+  outline: 1px solid #1a202c;
+  animation: wallAnimation 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Visited node - smooth color-morphing animation with hardware acceleration */
+.node-visited {
+  animation: visitedAnimation 1.5s alternate ease-in-out forwards;
+}
+
+/* Shortest path node - premium neon gold pulse animation */
+.node-shortest-path {
+  animation: shortestPathAnimation 1.0s ease-in-out forwards;
+}
+
+/* KEYFRAMES FOR ANIMATIONS */
+
+/* Grow and bounce special start/end nodes when rendered */
+@keyframes specialNodeAnimation {
+  0% {
+    transform: scale(0.3);
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+/* Pop wall nodes into place */
+@keyframes wallAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #2d3748;
+  }
+  50% {
+    transform: scale(1.08);
+    background-color: #2d3748;
+  }
+  100% {
+    transform: scale(1.0);
+    background-color: #1a202c;
+  }
+}
+
+/* Visited nodes ripple from blue-purple to cyan-teal */
+@keyframes visitedAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: rgba(0, 0, 66, 0.75);
+    border-radius: 100%;
+  }
+  25% {
+    background-color: rgba(17, 104, 217, 0.75);
+  }
+  50% {
+    background-color: rgba(0, 217, 159, 0.6);
+  }
+  75% {
+    background-color: rgba(0, 190, 218, 0.75);
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.0);
+    background-color: rgba(0, 180, 216, 0.75);
+    outline: 1px solid rgba(0, 180, 216, 0.2);
+  }
+}
+
+/* Gold neon highlight for the final shortest path */
+@keyframes shortestPathAnimation {
+  0% {
+    transform: scale(0.6);
+    background-color: #ffb703;
+  }
+  50% {
+    transform: scale(1.15);
+    background-color: #fb8500;
+  }
+  100% {
+    transform: scale(1.0);
+    background-color: #ffb703;
+    outline: 1px solid #fb8500;
+  }
+}
